@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://superintelligencesg.ai/</loc></url>
+  <url><loc>https://superintelligencesg.ai/about.html</loc></url>
   <url><loc>https://superintelligencesg.ai/field-notes/</loc></url>
   <url><loc>https://superintelligencesg.ai/field-notes/singapore-ai-ecosystem.html</loc></url>
   <url><loc>https://superintelligencesg.ai/field-notes/from-programme-to-practice.html</loc></url>
+  <url><loc>https://superintelligencesg.ai/field-notes/trusted-deployment.html</loc></url>
+
 </urlset>

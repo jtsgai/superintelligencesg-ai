@@ -27,7 +27,8 @@
   <section class="shell cross" aria-label="Explore Superintelligence SG"><span>One initiative, three doors.</span><div class="cross-links"><a href="https://superintelligencesg.ai">Lab</a><a href="https://superintelligencesg.com">Navigator</a><a href="https://superintelligencesg.org">Commons</a><a href="https://superintelligencesg.com/directory.html">Save a shortlist</a></div></section>
   <footer class="shell"><span>Superintelligence SG</span><a href="mailto:superintelligencesg@gmail.com">superintelligencesg@gmail.com</a><a href="https://superintelligencesg.ai">Back to Lab</a></footer>
   <script>
-    const form=document.querySelector('#brief-form'),email=document.querySelector('#email-brief'),gmail=document.querySelector('#gmail-brief'),button=document.querySelector('#copy-template'),status=document.querySelector('#template-status');
+    const form=document.querySelector('#brief-form'),email=document.querySelector('#email-brief'),gmail=document.querySelector('#gmail-brief'),button=document.querySelector('#copy-template'),status=document.querySelector('#template-status'),materials=document.querySelector('#materials');
+    const shortlist=new URLSearchParams(location.search).get('navigator_shortlist');try{const source=new URL(shortlist);if(source.origin==='https://superintelligencesg.com'&&source.pathname==='/directory.html'&&(source.searchParams.has('list')||source.searchParams.has('shortlist'))){materials.value='Navigator shortlist: '+source.href;status.textContent='Your Navigator shortlist link has been included. Add the decision you need to make before preparing the email.'}}catch{}
     const buildEnquiry=()=>{const data=new FormData(form);return [
       `Decision or question: ${data.get('decision')||''}`,
       `Organisation or sector: ${data.get('organisation')||''}`,

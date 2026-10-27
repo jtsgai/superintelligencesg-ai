@@ -5,8 +5,8 @@ Usage: python3 scripts/si-ecosystem.py [--check]
 
 Reads partials/si-ecosystem.html, marks this site's link with aria-current="page",
 then writes the CSS (end of <head>), bar (start of <body>, after a skip link) and
-footer block (after </footer>) into every site page. Re-running replaces the blocks
-between the si-eco markers, so the script is idempotent. Site files are mirrored to
+footer block (end of <footer>) into every site page. Re-running replaces the blocks
+between the sisg-eco markers, so the script is idempotent. Site files are mirrored to
 dist/ afterwards because the hosted build serves dist/ while GitHub Pages serves the root.
 --check exits non-zero if any page or dist/ copy is out of date.
 """
@@ -26,7 +26,7 @@ def blocks():
     text = PARTIAL.read_text()
     found = {}
     for name in ('css', 'bar', 'foot'):
-        m = re.search(rf'<!-- si-eco:{name} -->.*?<!-- /si-eco:{name} -->', text, re.S)
+        m = re.search(rf'<!-- sisg-eco:{name} -->.*?<!-- /sisg-eco:{name} -->', text, re.S)
         if m:
             found[name] = m.group(0).replace(
                 f'<a href="{SITE}">', f'<a href="{SITE}" aria-current="page">')
@@ -34,7 +34,7 @@ def blocks():
 
 
 def place(html, name, block):
-    marked = re.compile(rf'<!-- si-eco:{name} -->.*?<!-- /si-eco:{name} -->', re.S)
+    marked = re.compile(rf'<!-- sisg-eco:{name} -->.*?<!-- /sisg-eco:{name} -->', re.S)
     if marked.search(html):
         return marked.sub(lambda _: block, html, count=1)
     if name == 'css':
@@ -44,8 +44,8 @@ def place(html, name, block):
         anchor = skip or re.search(r'<body[^>]*>', html)
         return html[:anchor.end()] + '\n' + block + '\n' + html[anchor.end():]
     if name == 'foot':
-        end = html.rfind('</footer>') + len('</footer>')
-        return html[:end] + '\n' + block + html[end:]
+        end = html.rfind('</footer>')
+        return html[:end] + block + html[end:]
     raise ValueError(name)
 
 

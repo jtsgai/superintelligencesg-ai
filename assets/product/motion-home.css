@@ -1,0 +1,14 @@
+/* Lab homepage motion. Soft glow only on .hero-media::before. Never change .hero-media position. */
+.hero-media::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse 34% 30% at 30% 40%,rgb(36 81 207/.08),transparent 70%),
+             radial-gradient(ellipse 26% 24% at 46% 66%,rgb(196 237 76/.10),transparent 70%);
+  animation:aiglow 16s ease-in-out infinite alternate}
+@keyframes aiglow{to{opacity:.45}}
+@media (prefers-reduced-motion:reduce){.hero-media::before{display:none;animation:none}}
+/* progressive enhancement — NEVER .shell[style] (GSAP writes style). Lens buttons/output never hidden. */
+.js-motion .hero-copy > *,.js-motion .hero .scroll-cue,
+.js-motion #research h2,.js-motion #research .research-lede,.js-motion #research .research-story,
+.js-motion #lab .shell.intro,
+.js-motion .principles h2,.js-motion .principles .principle,
+.js-motion section.shell.cross,
+.js-motion aside.nodi-cameo{visibility:hidden}

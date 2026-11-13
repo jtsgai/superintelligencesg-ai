@@ -15,9 +15,9 @@ gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
   if (done) return;
   document.documentElement.classList.add("js-motion");
   const ease = "power2.out";
-  gsap.fromTo(".hero-copy > *, .hero .scroll-cue", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.09, ease });
+  gsap.fromTo(".hero-copy > *, .hero .scroll-cue", { autoAlpha: 0, y: 16 }, { autoAlpha: 1, y: 0, duration: 0.7, stagger: 0.09, ease, clearProps: "transform,translate,rotate,scale" });
   SCROLL.forEach(([trigger, targets, stagger, y, alpha = 1]) =>
     gsap.fromTo(targets, { autoAlpha: 0, y }, { autoAlpha: alpha, y: 0, duration: 0.75, ease, stagger,
-      immediateRender: false, scrollTrigger: { trigger, start: "top 88%", once: true } }));
+      immediateRender: false, clearProps: "transform,translate,rotate,scale", scrollTrigger: { trigger, start: "top 88%", once: true } }));
   return () => { ScrollTrigger.getAll().forEach((t) => t.kill()); document.documentElement.classList.remove("js-motion"); };
 });

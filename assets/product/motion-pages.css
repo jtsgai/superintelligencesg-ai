@@ -1,0 +1,12 @@
+/* Case-page stagger (field notes, evidence intelligence, work with us). Progressive enhancement:
+   targets are hidden ONLY while motion-pages.js has added .js-motion inside
+   gsap.matchMedia("(prefers-reduced-motion: no-preference)"). Without JS, with reduced motion,
+   or with ?done=1 the class is never added and everything stays visible. */
+.js-motion .lede > *,
+.js-motion .article-head > *,
+.js-motion .note-card,
+.js-motion .evidence-row,
+.js-motion .door-link,
+.js-motion .source-list a,
+.js-motion .path article,
+.js-motion .samples .sample{visibility:hidden}

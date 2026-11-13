@@ -1,0 +1,27 @@
+/* Card Hover Lift (.ai). Hover/keyboard-focus feedback only for pointer devices that allow motion.
+   Uses the CSS individual property `translate` and never overwrites the transform property, so it composes with the GSAP
+   entrance (motion-home.js / motion-pages.js write inline transforms) and with si-ripple.css.
+   Not applied to dense tool buttons or pure text nav links. Reduced motion / touch: nothing here. */
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  /* Bordered cards */
+  .path article,.sample{transition:translate .22s ease-out,box-shadow .22s ease-out,border-color .2s ease}
+  .path article:hover,.path article:focus-within,
+  .sample:hover,.sample:focus-within{translate:0 -3px;border-color:var(--accent);box-shadow:0 14px 28px -20px rgba(20,41,35,.45)}
+
+  /* Row-style items (border-bottom/top list rows) */
+  .research-story,.principle,.note-card,.evidence-row,.item{transition:translate .22s ease-out,box-shadow .22s ease-out}
+  .research-story:hover,.research-story:focus-within,
+  .principle:hover,.principle:focus-within,
+  .note-card:hover,.note-card:focus-within,
+  .evidence-row:hover,.evidence-row:focus-within,
+  .item:hover,.item:focus-within{translate:0 -3px;box-shadow:0 12px 24px -22px rgba(20,41,35,.5)}
+
+  /* Door / source links */
+  .door-link,.source-list a{transition:translate .22s ease-out}
+  .door-link:hover,.door-link:focus-within,
+  .source-list a:hover,.source-list a:focus-visible{translate:0 -3px}
+
+  /* Homepage lens buttons keep their existing :active press offset; sideways shift uses translate only */
+  .lens{transition:translate .2s ease-out,border-color .2s ease,background .2s ease}
+  .lens:hover,.lens:focus-visible{translate:4px 0}
+}

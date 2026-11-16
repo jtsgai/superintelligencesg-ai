@@ -1,15 +1,15 @@
 # Superintelligence SG 维护协作规则
 
 适用：Mac ChatGPT App（「SI SG Website 3」及其绑定的周一 22:00 / 周四 10:00 定时维护任务）与 SI 新加坡助手。
-最后更新：2026-11-14，由劲涛确认后生效。
+最后更新：2026-11-16，由劲涛确认后生效。
 
 ## 1. 分工
 
 | 角色 | 负责 |
 |---|---|
-| Mac ChatGPT App | 调研来源；更新 .ai 与 .si 内容；开 PR；.si 的 Sites 发布（经劲涛确认） |
+| Mac ChatGPT App | 调研来源；更新 .ai 与 .si 内容；开 PR |
 | SI 新加坡助手 | 读取每次维护报告；核对来源；审 PR；把需要的内容同步到 .com / .org；向劲涛汇报 |
-| 劲涛 | 确认 .si 发布；最终拍板 |
+| 劲涛 | 本人在「SI SG Website 3」发布 .si 的 Sites；最终拍板 |
 
 ## 2. 改代码必须走 PR，不直接推 main
 
@@ -41,3 +41,9 @@
 ## 5. 发布顺序
 
 1. ChatGPT App 开 PR → 2. SI 新加坡助手核对、审查、合并 → 3. .ai 由 GitHub Pages 自动部署；.si 由劲涛在 Mac ChatGPT App 发布 Sites → 4. SI 新加坡助手线上验收并同步 .com / .org → 5. 向劲涛汇报。
+
+## 6. 健康检查与数据口径
+
+- Commons 目录总数只看 `https://api.superintelligencesg.org/v1/stats` 的 `total`（2026-11-16 为 109）；条目列表用 `/v1/entries`。
+- 旧接口 `/api/organizations` 只返回 D1 里的自主提交条目（2026-11-16 为 2 条），与 `/v1/stats` 统计口径不同，数量不一致属正常，不用它比较总数，也不标为异常。
+- 页面 HTML 会被 Cloudflare 注入 challenge 脚本，核对线上时比对内容，不比对原始 HTML 的哈希。
